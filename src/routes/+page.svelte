@@ -11,9 +11,9 @@
 		Coming Soon
 	</h1>
 	<p
-		class="mt-4 max-w-lg text-center text-lg text-gray-700 dark:text-gray-300 md:text-xl lg:text-2xl"
+		class="mt-4 max-w-lg text-center text-lg text-gray-700 dark:text-gray-500 md:text-xl lg:text-2xl"
 	>
-		The future's codeword? Kayord
+		The future's codeword? <span class="font-bold text-gray-200">Kayord</span>
 	</p>
 </section>
 
@@ -33,7 +33,7 @@
 	}
 	@keyframes glow {
 		0% {
-			@apply bg-primary/50;
+			@apply bg-violet-600/50;
 		}
 		33% {
 			@apply bg-secondary/50;
@@ -42,7 +42,7 @@
 			@apply bg-accent/50;
 		}
 		100% {
-			@apply bg-primary/50;
+			@apply bg-violet-600/50;
 		}
 	}
 	@keyframes pulse {
