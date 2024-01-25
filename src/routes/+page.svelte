@@ -1,7 +1,11 @@
+<script>
+	import { base } from "$app/paths";
+</script>
+
 <section class="flex h-screen flex-col items-center justify-center md:px-6 lg:px-8">
 	<figure>
 		<section class="img-bg" />
-		<img src="/logo.svg" alt="logo" class="mb-8" />
+		<img src="{base}/logo.svg" alt="logo" class="mb-8" />
 	</figure>
 	<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 md:text-5xl lg:text-6xl">
 		Coming Soon
