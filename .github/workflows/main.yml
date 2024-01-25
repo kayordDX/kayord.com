@@ -1,16 +1,11 @@
-name: Publish
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   build:
@@ -19,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Setup nodejs environment
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
 
@@ -33,9 +27,30 @@ jobs:
       - name: build
         run: pnpm build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: build
-          token: ${{ secrets.GITHUB_TOKEN }}
+          path: "build/"
+
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     branch: gh-pages
+      #     folder: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
