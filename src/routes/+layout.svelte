@@ -1,5 +1,9 @@
-<script>
-	import "../app.pcss";
+<script lang="ts">
+	import { type Snippet } from "svelte";
+	import "../app.css";
+	let { children }: { children?: Snippet } = $props();
 </script>
 
-<slot />
+{#if children}
+	{@render children()}
+{/if}
